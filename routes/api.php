@@ -17,5 +17,5 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
-Route::resource('users','Api\UserController'); // as this is api url so laravel by default prefix 'api' with all url
+Route::resource('users','Api\UserController',['except' => ['create','edit']]); // as this is api url so laravel by default prefix 'api' with all url
 
