@@ -14,7 +14,7 @@
                <td>{{ user.email }}</td>
                <td>{{ user.image }}</td>
                <td>
-                   <a href="" class= "btn btn-primary">Edit</a>
+                   <a :href="'/users/'+user.id+'/edit'" class= "btn btn-primary">Edit</a>
                    <a  class= "btn btn-danger" @click.prevent="deleteUser(user.id, index)">Delete</a>
                </td>
             </tr> 

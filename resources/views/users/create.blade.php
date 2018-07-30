@@ -1,4 +1,5 @@
 @extends('layout')
 @section('content')
-    <h1>This is create file</h1>
+    <h2>Create User</h2>
+    <user-create></user-create>
 @endsection

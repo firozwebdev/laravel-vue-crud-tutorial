@@ -36,7 +36,10 @@ class UserController extends Controller
 
         $user->save();
 
-        return response()->json($user);
+        return response()->json([
+            'message' => 'User created successfully !!',
+            'user' => $user,
+        ],201);
     }
 
     /**
@@ -64,7 +67,10 @@ class UserController extends Controller
         $user->name = $request->get('name');
         $user->email = $request->get('email');
         $user->update();
-        return response()->json($user);
+        return response()->json([
+            'message' => 'User updated successfully !!',
+            'user' => $user,
+        ],201);
        
     }
 
