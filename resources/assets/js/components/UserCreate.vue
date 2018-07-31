@@ -22,6 +22,7 @@
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-default" @click.prevent="addNewUser()">Create</button>
+                <a  href="/users" class="btn btn-success">Back</a>
             </div>
         </form>
     </div>
@@ -50,7 +51,7 @@
                 formData.append('email',this.email);
                 formData.append('password',this.password);
                 formData.append('image', this.file, this.file.name);
-                
+
                 axios.post('/api/users', formData).then( response => {
                     this.message = response.data.message;
                 }).catch( error => {

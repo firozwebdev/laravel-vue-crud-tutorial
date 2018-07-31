@@ -1,6 +1,7 @@
 <template>
     <div>
-        <table class="table table-bordered">
+        <a  href="/users/create" class="btn btn-success">Create User</a>
+        <table class="table table-bordered table-striped">
            <tr>
                <th>Id</th>
                <th>Name</th>
@@ -12,7 +13,7 @@
                <td>{{ user.id }}</td>
                <td>{{ user.name }}</td>
                <td>{{ user.email }}</td>
-               <td>{{ user.image }}</td>
+               <td><img style="width: 100px;height:80px;" :src="'/img/'+user.image" alt=""></td>
                <td>
                    <a :href="'/users/'+user.id+'/edit'" class= "btn btn-primary">Edit</a>
                    <a  class= "btn btn-danger" @click.prevent="deleteUser(user.id, index)">Delete</a>
