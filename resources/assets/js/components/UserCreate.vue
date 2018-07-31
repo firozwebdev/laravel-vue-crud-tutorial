@@ -42,14 +42,15 @@
         
         methods: {
             handleFileUpload(){
-                //we will write logic later....
+                this.file = this.$refs.file.files[0]; //we load all image information in file.
             },
             addNewUser(){
                 let formData = new FormData(); // this class will handle all input data
                 formData.append('name',this.name);
                 formData.append('email',this.email);
                 formData.append('password',this.password);
-
+                formData.append('image', this.file, this.file.name);
+                
                 axios.post('/api/users', formData).then( response => {
                     this.message = response.data.message;
                 }).catch( error => {

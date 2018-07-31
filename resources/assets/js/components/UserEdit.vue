@@ -49,13 +49,14 @@
         },
         
         methods: {
-            handleFileUpload(){
-                //we will write logic later....
+             handleFileUpload(){
+                this.file = this.$refs.file.files[0]; //we load all image information in file.
             },
             updateUser(){
                 let formData = new FormData(); // this class will handle all input data
                 formData.append('name',this.name);
                 formData.append('email',this.email);
+                formData.append('image', this.file, this.file.name);
                 formData.append('_method','PUT'); //sending put method to laravel though we use post method in axios below.
                 
 

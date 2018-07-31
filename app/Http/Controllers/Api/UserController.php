@@ -29,9 +29,18 @@ class UserController extends Controller
      */
     public function store(Request $request, User $user) // this is called implicit model binding
     {
+        if($request->hasfile('image')){
+            $file = $request->file('image');
+            $name = time().$file->getClientOriginalName(); //name should be same for image so we will use time function before image name.
+            $file->move(public_path().'/img/',$name);
+        }else{
+            $name = '';
+        }
+        
+        
         $user->name = $request->get('name');
         $user->email = $request->get('email');
-        $user->image = '1.jpg'; // we will work for it later.
+        $user->image = $name; 
         $user->password = bcrypt( $request->get('password'));
 
         $user->save();
@@ -64,8 +73,17 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        if($request->hasfile('image')){
+            $file = $request->file('image');
+            $name = time().$file->getClientOriginalName(); //name should be same for image so we will use time function before image name.
+            $file->move(public_path().'/img/',$name);
+        }else{
+            $name = '';
+        }
+
         $user->name = $request->get('name');
         $user->email = $request->get('email');
+        $user->image = $name; 
         $user->update();
         return response()->json([
             'message' => 'User updated successfully !!',
